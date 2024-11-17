@@ -35,7 +35,6 @@ class _UserFormState extends State<UserForm> {
 
       // Send the POST request to the API
       try {
-        Navigator.of(context).pop();
         await apiService.createUser(newUser);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('User added successfully')),
@@ -51,6 +50,7 @@ class _UserFormState extends State<UserForm> {
       } finally {
         setState(() {
           _isSubmitting = false;
+          Navigator.of(context).pop();
         });
       }
     }
